@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="travelMap">
+<select id="listMember" resultType="maphack.travelmap.dto.Member">
+	SELECT * FROM Member
+</select>
+<insert id="insertFavorite" parameterType="hashmap">
+	insert into book_mark values(bookmark_seq.nextval, #{mid}, #{bmIlocation})
+</insert>
+
+<delete id="deleteFavorite" parameterType="hashmap">
+	delete from book_mark where bm_mid=#{mid} and bm_ilocation=#{bmIlocation}
+</delete>
+	<select id="selectFavorite" resultType="maphack.travelmap.dto.Favorite" parameterType="String">
+		SELECT bm_ilocation from book_mark where bm_mid=#{bmMid}
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="infoDetail">
+	<!-- 1. 모든 등록된 회원 보기 -->
+<!-- 	<select id="listMember" resultType="maphack.makemap.dto.Member"> -->
+<!-- 		SELECT * FROM Member -->
+<!-- 	</select> -->
+	<!-- 리뷰 등록 -->
+	<insert id="reviewInsert" parameterType="maphack.infodetail.dto.InfoReview">
+		insert into info_review values(infodetail_seq.nextval, #{irLocation}, #{irContent}, #{irStar}, sysdate, #{irMid})
+	</insert>
+	<!-- 리뷰 목록보기 -->
+	<select id="reviewSelect" resultType="maphack.infodetail.dto.InfoReview" parameterType="hashmap">
+<!-- 		select * from info_review where ir_location=#{irLocation} order by ir_date desc -->
+		
+		select * from info_review 
+		where ir_num in(select ir_num from (select rownum as rnum, ir_num from (select ir_num from 
+		info_review order by ir_date desc)) 
+		<if test="end!=0">
+		<![CDATA[
+			where rnum>=#{start} and rnum<=#{end}
+		]]>
+		</if>) 
+		order by ir_date desc
+	</select>
+	<!-- 리뷰 수정 -->
+	<update id="reviewUpdate" parameterType="maphack.infodetail.dto.InfoReview">
+		update info_review set ir_content=#{irContent}, ir_star=#{irStar}
+		where ir_num=#{irNum} and ir_location=#{irLocation} and ir_mid=#{irMid}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

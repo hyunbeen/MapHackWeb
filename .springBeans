@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[3.9.1.201710100539-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[false]]></enableImports>
+	<configs>
+		<config>WebContent/WEB-INF/springconfig/travelmap-servlet.xml</config>
+	</configs>
+	<autoconfigs>
+		<config>WebContent/WEB-INF/springconfig/main-servlet.xml</config>
+		<config>WebContent/WEB-INF/springconfig/info-servlet.xml</config>
+		<config>WebContent/WEB-INF/springconfig/mypage-servlet.xml</config>
+		<config>WebContent/WEB-INF/springconfig/community-servlet.xml</config>
+		<config>WebContent/WEB-INF/springconfig/common-servlet.xml</config>
+		<config>WebContent/WEB-INF/springconfig/freeboard-servlet.xml</config>
+	</autoconfigs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

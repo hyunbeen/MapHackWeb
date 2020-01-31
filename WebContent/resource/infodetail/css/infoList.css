@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* 어코디언 */
+.card {
+	margin-bottom: 4px;
+	background: rgb(95, 176, 228);
+}
+
+.card-header {
+	border: solid 1px grey;
+	border-radius: 4px;
+	padding-left: 5px;
+	background: rgb(51, 122, 183);
+}
+
+.card-header a {
+	color: white;
+}
+
+.card-block {
+	color: white;
+	padding: 12px;
+}
+
+a:focus {
+	outline: none;
+}
+
+/* 테이블 */
+.td1 {
+	width: 20%;
+}
+
+.td2 {
+	width: 80%;
+}
+
+/* 검색입력 */

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<display-name>MapHack</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<servlet-name>mapHackServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>
+			/WEB-INF/springconfig/common-servlet.xml
+			/WEB-INF/springconfig/main-servlet.xml
+			/WEB-INF/springconfig/mypage-servlet.xml
+			/WEB-INF/springconfig/info-servlet.xml 
+			/WEB-INF/springconfig/community-servlet.xml
+			/WEB-INF/springconfig/freeboard-servlet.xml
+			/WEB-INF/springconfig/travelmap-servlet.xml
+			/WEB-INF/springconfig/notice-servlet.xml
+			/WEB-INF/springconfig/login-servlet.xml
+			/WEB-INF/springconfig/join-servlet.xml
+			/WEB-INF/springconfig/android-servlet.xml
+			/WEB-INF/springconfig/mytravel-servlet.xml
+			</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mapHackServlet</servlet-name>
+		<url-pattern>*.mh</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 한글 설정 -->
+	<filter>
+		<filter-name>charEncoding</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<!-- ajax통신시 한글처리에 필요한 설정 -->
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>charEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+</web-app>

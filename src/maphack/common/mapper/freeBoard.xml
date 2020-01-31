@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freeBoard">
+	<!-- 1. 모든 등록된 회원 보기 -->
+<!-- 	<select id="listMember" resultType="maphack.makemap.dto.Member"> -->
+<!-- 		SELECT * FROM Member -->
+<!-- 	</select> -->
+	<insert id="freeInsert" parameterType="maphack.freeboard.dto.FreeBoard"> <!-- FreeBoard에서 값 받아옴 -->
+<!-- 		insert into board values(board_seq.nextval, #{bCate}, #{bTitle}, #{bContent}, #{bHtml}, #{bCnt}, sysdate, #{bMid}) -->
+			insert into board values(board_seq.nextval, '자유게시판', #{bTitle}, #{bContent}, 'HTML', '0', sysdate, 'khe')
+	</insert>
+
+	<select id="freeSelect" resultType="maphack.freeboard.dto.FreeBoard" parameterType="maphack.freeboard.dto.FreeBoard">
+		select b_num, b_title, b_content, b_html, b_cnt, b_date, b_mid from board 
+		where b_num in(select b_num from (select rownum as rnum, b_num from (select b_num from 
+		board order by b_date desc)) 
+		<if test="end!=0">
+		<![CDATA[
+			where rnum>=#{start} and rnum<=#{end}
+		]]>
+		</if>) 
+		order by b_date desc	
+	</select>
+	
+	<select id="freeOneSelect" resultType="maphack.freeboard.dto.FreeBoard" parameterType="maphack.freeboard.dto.FreeBoard">
+		select * from board 
+		where b_num = #{bNum}
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
